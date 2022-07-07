@@ -1,0 +1,58 @@
+﻿<Window x:Class="Fractals.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fractals"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        SizeChanged="Window_SizeChanged">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="imgColumn" Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+
+        <Image x:Name="img" Grid.Column="0" Stretch="Uniform">
+            
+        </Image>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="2">
+            <Label HorizontalContentAlignment="Center">Settings</Label>
+            <Label Margin="0 0 0 5">Fractal</Label>
+            <ComboBox x:Name="fractalSelector" Margin="0 0 0 5" SelectionChanged="fractalSelector_SelectionChanged">
+                <ComboBoxItem>Tree</ComboBoxItem>
+                <ComboBoxItem>Curve</ComboBoxItem>
+                <ComboBoxItem>Triangle</ComboBoxItem>
+                <ComboBoxItem>Carpet</ComboBoxItem>
+                <ComboBoxItem>Cantor</ComboBoxItem>
+            </ComboBox>
+            <Label x:Name="depthLabel">Depth: 7</Label>
+            <Slider x:Name="depthSlider" Orientation="Horizontal" Value="7" Maximum="15" Minimum="1" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="depthSlider_ValueChanged"></Slider>
+            <StackPanel x:Name="treeInt" Visibility="Collapsed">
+                <Label x:Name="leftAngleLabel">Left Angle</Label>
+                <Slider x:Name="leftAngleSlider" Orientation="Horizontal" Value="0.785" Maximum="1.57" Minimum="0" ValueChanged="leftAngleSlider_ValueChanged"></Slider>
+                <Label x:Name="rightAngleLabel">RightAngle</Label>
+                <Slider x:Name="rightAngleSlider" Orientation="Horizontal" Value="0.785" Maximum="1.57" Minimum="0" ValueChanged="rightAngleSlider_ValueChanged"></Slider>
+            </StackPanel>
+            <StackPanel x:Name="cantorInt" Visibility="Collapsed">
+                <Label>Spacing</Label>
+                <Slider x:Name="spaceSlider" Orientation="Horizontal" Value="20" Maximum="50" Minimum="10" ValueChanged="drawBtn_Click" ></Slider>
+            </StackPanel>
+            <Label x:Name="zoomLabel" Margin="0 0 0 5">Zoom: 1x</Label>
+            <Slider x:Name="zoomSlider" Orientation="Horizontal" Value="1" Maximum="5" Minimum="1" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="zoomSlider_ValueChanged"></Slider>
+            <Button x:Name="drawBtn" Click="drawBtn_Click">Draw</Button>
+            <StackPanel Orientation="Vertical" Margin="0 5 0 5">
+                <Button x:Name="moveLeftBtn" Click="moveBtn_Click">Move Left</Button>
+                <Button x:Name="moveRightBtn" Click="moveBtn_Click">Move Right</Button>
+                <Button x:Name="moveUpBtn" Click="moveBtn_Click">Move Up</Button>
+                <Button x:Name="moveDownBtn" Click="moveBtn_Click">Move Down</Button>
+            </StackPanel>
+            <Button x:Name="saveBtn" Click="saveBtn_Click">Save Picture</Button>
+        </StackPanel>
+    </Grid>
+</Window>
